@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schnelzugriffswebsite Koppol</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png"  href="logo.png">
+    <style>
+        .name-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .name-list li {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #471d6e;
+            border-radius: 5px;
+        }
+        .name-list li a {
+            text-decoration: none;
+            color:rgba(255, 145, 0, 0.925);
+        }
+        .name-list li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Suche nach Websites</h1>
+    <a href="index.html" class="red-link">Zurück</a>
+    <input type="text" id="searchInput" placeholder="Websites suchen...">
+    
+    <ul id="nameList" class="name-list">
+        <!-- Die Websites werden hier angezeigt -->
+    </ul>
+
+    <script>
+        // Liste der Websites mit Namen und URLs
+        const websites = [
+            { name: "YouTube", url: "https://www.youtube.com" },
+            { name: "Instagram", url: "https://www.instagram.com" },
+            { name: "Facebook", url: "https://www.facebook.com" },
+            { name: "Twitter", url: "https://www.twitter.com" },
+            { name: "Discord", url: "https://www.discord.com" },
+            { name: "CNN", url: "https://www.edition.cnn.com" },
+            { name: "BBC", url: "https://www.bbc.com" },
+            { name: "Spiegel", url: "https://www.spiegel.de" },
+            { name: "Netflix", url: "https://www.netflix.com" },
+            { name: "Twich", url: "https://www.twich.tv" },
+            { name: "Disney+", url: "https://www.disneyplus.com" },
+            { name: "Ebay", url: "https://www.ebay.com" },
+            { name: "Amazon", url: "https://www.amazon.de" },
+            { name: "Kleinanzeigen", url: "https://www.kleinanzeigen.de" },
+            { name: "Zalando", url: "https://www.zalando.de" },
+            { name: "Temu", url: "https://www.temu.com" },
+            { name: "AliExpress", url: "https://www.aliexpress.com" },
+            { name: "Fashionhype", url: "https://www.fashionhype.com" },
+            { name: "Google", url: "https://www.google.de" },
+            { name: "Microsoft-Bing", url: "https://www.bing.com" },
+            { name: "Offizieller Apple Support", url: "https://support.apple.com" },
+            { name: "Offizieller ASUS Support", url: "https://www.asus.com/de/support/" },
+            { name: "Microsoft Support", url: "https://support.microsoft.com" },
+            { name: "X-Box Support", url: "https://support.xbox.com" },
+            { name: "Sony Support", url: "https://www.sony.de/electronics/support" },
+            { name: "PlayStation Support", url: "https://www.playstation.com/de-de/support/" },
+            { name: "Netflix Hilfe-Center", url: "https://help.netflix.com/de" },
+            { name: "Slither.io", url: "https://www.slither.com/io" },
+            { name: "Agar.io", url: "https://www.agar.io" },
+            { name: "Krunker.io", url: "https://www.krunker.io" },
+            { name: "LittleAlchemy", url: "https://www.littlealchemy.com" },
+            { name: "Realm of the Mad God Exalt", url: "https://www.realmofthemadgod.com" },
+            { name: "Diep.io", url: "https://www.diep.io.com" },
+            { name: "Scratch", url: "https://scatch.mit.edu" },
+            { name: "Poki", url: "https://poki.com" },
+            { name: "Spielaffe", url: "https://www.spielaffe.de" },
+            { name: "Miniclip", url: "https://www.miniclip.com" },
+            { name: "CrazyGames", url: "https://de.crazygames.com" },
+        ];
+
+        // Element-Referenzen
+        const searchInput = document.getElementById('searchInput');
+        const nameList = document.getElementById('nameList');
+
+        // Alle Websites anzeigen, wenn die Seite geladen wird
+        displayMatchingWebsites('');
+
+        // Funktion zur Anzeige der passenden Websites
+        function displayMatchingWebsites(searchTerm) {
+            nameList.innerHTML = ''; // Leert die Liste
+
+            // Filtere die Websites basierend auf der Suche oder zeige alle an, wenn nichts eingegeben wurde
+            const filteredWebsites = websites.filter(website => 
+                website.name.toLowerCase().includes(searchTerm.toLowerCase()) || searchTerm === ''
+            );
+
+            // Zeige die gefilterten Websites an
+            filteredWebsites.forEach(website => {
+                const li = document.createElement('li');
+                const link = document.createElement('a');
+                link.textContent = website.name;
+                link.href = website.url;
+                link.target = '_blank'; // Öffnet den Link in einem neuen Tab
+                li.appendChild(link);
+                nameList.appendChild(li);
+            });
+        }
+
+        // Event-Listener für die Eingabe
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value;
+            displayMatchingWebsites(searchTerm);
+        });
+    </script>
+
+</body>
+</html>
